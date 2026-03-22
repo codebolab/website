@@ -1,0 +1,14 @@
+---
+interface Props {
+  size?: "sm" | "md" | "lg";
+}
+
+const { size = "md" } = Astro.props;
+---
+
+<a class={`brand-logo brand-logo--${size}`} href="#top" aria-label="CodeboLab home">
+  <span class="brand-logo__word">code</span>
+  <span class="brand-logo__dot">.</span>
+  <span class="brand-logo__word">bo</span>
+  <span class="brand-logo__mark" aria-hidden="true">()</span>
+</a>

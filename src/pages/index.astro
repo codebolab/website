@@ -1,0 +1,336 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandLogo from "../components/BrandLogo.astro";
+
+const problemItems = [
+  {
+    icon: "foundation",
+    color: "mint",
+    title: "MVPs without foundations",
+    body: "Most MVPs trade speed for architectural debt that makes scaling impossible within 12 months."
+  },
+  {
+    icon: "speed",
+    color: "sky",
+    title: "Systems don't scale",
+    body: "Monolithic designs fail under load, leading to expensive rewrites and lost market opportunities."
+  },
+  {
+    icon: "analytics",
+    color: "tertiary",
+    title: "Analytics too late",
+    body: "Data strategy is often an afterthought, leaving teams blind to user behavior and revenue leaks."
+  },
+  {
+    icon: "psychology",
+    color: "mint",
+    title: "AI not considered",
+    body: "Products built today without an AI-ready data pipeline will be obsolete by tomorrow."
+  }
+];
+
+const approachItems = [
+  {
+    title: "Define",
+    body: "We strip away the noise to find the core technical challenges and business opportunities in your product vision."
+  },
+  {
+    title: "Make decisions",
+    body: "Architecture, stack selection, and data modeling. We build the skeleton that supports long-term growth."
+  },
+  {
+    title: "Design",
+    body: "High-fidelity interfaces optimized for technical usability and complex data display."
+  },
+  {
+    title: "Build / Evolve",
+    body: "Iterative development with continuous integration, ensuring your product evolves as fast as the market demands."
+  }
+];
+
+const services = [
+  {
+    icon: "rocket_launch",
+    color: "mint",
+    title: "SaaS MVPs",
+    description: "High-fidelity products built with scalable infrastructure from Day 1. We specialize in complex B2B workflows.",
+    features: ["Cloud-Native Architecture", "Multi-Tenant Security", "Stripe & API Integration"]
+  },
+  {
+    icon: "database",
+    color: "sky",
+    title: "Data-driven systems",
+    description: "Real-time dashboards and analytics pipelines that turn fragmented data into actionable business intelligence.",
+    features: ["Event-Driven Architecture", "Real-time Telemetry", "BI Tool Customization"]
+  },
+  {
+    icon: "bolt",
+    color: "tertiary",
+    title: "AI-enabled features",
+    description: "Integrating LLMs and ML models into your existing workflows to automate decision-making and enhance UX.",
+    features: ["LLM Pipeline Orchestration", "Vector Database Ops", "Predictive Logic UX"]
+  }
+];
+
+const differentiators = [
+  {
+    label: "01. Product-first Thinking",
+    title: "Product-first Thinking",
+    body: "We think about your ROI before we think about the code. Every feature must justify its technical weight."
+  },
+  {
+    label: "02. Data / AI Expertise",
+    title: "Data / AI Expertise",
+    body: "We don't just \"add AI.\" We architect data pipelines that make AI meaningful and reliable for your users."
+  },
+  {
+    label: "03. High-Output Team",
+    title: "High-Output Team",
+    body: "Small, elite squads of senior engineers. No juniors, no bloat, just pure technical momentum."
+  },
+  {
+    label: "04. Complex Specialization",
+    title: "Complex Specialization",
+    body: "We thrive in the \"too hard\" category. Finance, healthcare, and enterprise-grade products are our playground."
+  }
+];
+
+const process = [
+  {
+    icon: "search",
+    color: "mint",
+    title: "Discovery",
+    description: "Deep technical audit, stakeholder alignment, and feasibility analysis. We map the territory before we march."
+  },
+  {
+    icon: "terminal",
+    color: "sky",
+    title: "Build",
+    description: "Rapid development sprints with bi-weekly demos. You see the product evolving in real-time, every two weeks."
+  },
+  {
+    icon: "auto_graph",
+    color: "tertiary",
+    title: "Scale",
+    description: "Post-launch optimization, infrastructure scaling, and continuous feature evolution based on user feedback."
+  }
+];
+---
+
+<BaseLayout>
+  <div id="top" class="site-shell">
+    <header class="site-header">
+      <div class="container nav">
+        <BrandLogo size="sm" />
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#approach" class="active">Approach</a>
+          <a href="#services">Services</a>
+          <a href="#why">Why us</a>
+          <a href="#process">Process</a>
+        </nav>
+        <a class="button button--primary button--small" href="#cta">Schedule a call</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero section">
+        <div class="hero__brackets" aria-hidden="true">
+          <span>(</span>
+          <span>)</span>
+        </div>
+        <div class="container hero__inner">
+          <div class="hero__eyebrow">
+            <span class="hero__signal"></span>
+            <span>Technical Strategy &amp; Development</span>
+          </div>
+
+          <h1>
+            Your partner to build <em>data-driven</em> and AI-powered SaaS products
+          </h1>
+
+          <p class="hero__copy">
+            We architect resilient software ecosystems that transform raw data into predictive
+            intelligence and scalable commercial advantages.
+          </p>
+
+          <div class="hero__actions">
+            <a class="button button--primary" href="#cta">Schedule a call</a>
+            <a class="button button--ghost" href="#services">
+              View our stack
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem -->
+      <section class="section section--alt">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Problem Identification</p>
+            <h2>Building a product is<br />harder than it looks.</h2>
+          </div>
+
+          <div class="problem-grid">
+            {problemItems.map((item) => (
+              <article class="problem-card">
+                <span class={`material-symbols-outlined problem-card__icon problem-card__icon--${item.color}`}>
+                  {item.icon}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Approach -->
+      <section id="approach" class="section">
+        <div class="container approach">
+          <div class="approach__content">
+            <p class="eyebrow">The Partnership Model</p>
+            <h2>We work as your technical partner.</h2>
+            <p>
+              We don't just take orders. We analyze your business goals and architect the path
+              that minimizes risk while maximizing technical leverage.
+            </p>
+
+            <div class="signal-panel" aria-hidden="true">
+              <div class="signal-panel__grid"></div>
+              <div class="signal-panel__icon">
+                <span class="material-symbols-outlined">hub</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="approach__list">
+            {approachItems.map((item, index) => (
+              <div class="approach-step">
+                <span class="approach-step__num">{String(index + 1).padStart(2, "0")}</span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="section section--panel section--bracketed">
+        <div class="container">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow">Expertise Areas</p>
+            <h2>What we build.</h2>
+          </div>
+
+          <div class="service-grid">
+            {services.map((service) => (
+              <article class={`service-card service-card--${service.color}`}>
+                <div class={`service-card__icon service-card__icon--${service.color}`}>
+                  <span class="material-symbols-outlined">{service.icon}</span>
+                </div>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul class="service-card__features">
+                  {service.features.map((feat) => (
+                    <li>
+                      <span class={`service-card__bullet service-card__bullet--${service.color}`}></span>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Why CodeboLab -->
+      <section id="why" class="section">
+        <div class="container">
+          <div class="why-heading-row">
+            <div class="section-heading" style="margin-bottom: 0;">
+              <p class="eyebrow">The Competitive Edge</p>
+              <h2 style="margin-top: 0.75rem;">Why CodeboLab.</h2>
+            </div>
+            <p class="why-quote">
+              "We bridge the gap between abstract business strategy and concrete technical execution."
+            </p>
+          </div>
+
+          <div class="why-grid">
+            {differentiators.map((item) => (
+              <article class="why-card">
+                <span class="why-card__label">{item.label}</span>
+                <p>{item.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Process -->
+      <section id="process" class="section section--alt">
+        <div class="container">
+          <div class="section-heading section-heading--center">
+            <p class="eyebrow">How we work</p>
+            <h2>The Development Lifecycle</h2>
+          </div>
+
+          <div class="process-grid">
+            <div class="process-line" aria-hidden="true"></div>
+            {process.map((item) => (
+              <article class="process-card">
+                <div class={`process-card__badge process-card__badge--${item.color}`}>
+                  <span class="material-symbols-outlined">{item.icon}</span>
+                </div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section id="cta" class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <p class="eyebrow">Ready to build your product?</p>
+            <h2>Ready to build your product?</h2>
+            <p>
+              We're currently accepting new projects. Book a strategy call to discuss your
+              technical roadmap.
+            </p>
+            <div class="hero__actions">
+              <a class="button button--primary" href="mailto:hello@codebolab.com">Schedule a call</a>
+              <a class="button button--ghost" href="#process">Our Process</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer">
+        <div>
+          <span class="footer__brand">CodeboLab</span>
+          <p>The architectural core for high-performance SaaS. Engineered with precision.</p>
+        </div>
+
+        <div class="footer__links">
+          <a href="#services">Services</a>
+          <a href="#why">Why us</a>
+          <a href="#process">Process</a>
+          <a href="#">LinkedIn</a>
+        </div>
+
+        <span class="footer__copy">© 2025 CodeboLab. All rights reserved.</span>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
