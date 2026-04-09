@@ -5,6 +5,9 @@
 - El dominio `code.bo` ya parece estar publicado en Route53 por otro proyecto Terraform.
 - El apex `code.bo` resuelve actualmente a una IP pública.
 - `www.code.bo` no responde actualmente con un registro `A` público.
+- En ACM `us-east-1` existen certificados emitidos para `*.code.bo` y `code.bo`.
+- El wildcard `*.code.bo` no cubre el apex `code.bo`.
+- El certificado correcto para CloudFront de esta landing es `code.bo`, porque incluye `www.code.bo` como SAN.
 
 ## Riesgo
 
@@ -24,11 +27,11 @@ Mantener un solo owner para Route53 de `code.bo`:
 Usar estas variables de Terraform o GitHub Actions:
 
 ```hcl
-domain_name                 = "code.bo"
-hosted_zone_name            = "code.bo"
-bucket_name                 = "code.bo"
+domain_name                  = "code.bo"
+hosted_zone_name             = "code.bo"
+bucket_name                  = "code.bo"
 create_route53_alias_records = false
-acm_certificate_arn         = "arn:aws:acm:us-east-1:ACCOUNT_ID:certificate/CERTIFICATE_ID"
+acm_certificate_arn          = "arn:aws:acm:us-east-1:693793396215:certificate/d6a00038-e467-46d8-8caf-44a72ffaac12"
 ```
 
 Esto permite que CloudFront use un certificado ya existente sin intentar crear o tomar ownership de los alias DNS desde este state.
