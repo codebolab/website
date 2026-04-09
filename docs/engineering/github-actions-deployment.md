@@ -9,15 +9,23 @@ Automatizar dos flujos de trabajo del repositorio:
 
 ## Workflows
 
+Los workflows ahora siguen el mismo patrón general usado en `specboard`:
+
+- un job de validación para pull requests y cambios en `main`
+- un job de deploy separado para `push` a `main` y `workflow_dispatch`
+- autenticación AWS por OIDC con un role compartido cuando exista
+- concurrencia por PR o ref para evitar ejecuciones redundantes
+
 ### `terraform.yml`
 
 - Ejecuta `terraform fmt`, `terraform validate` y `terraform plan` en pull requests y cambios a `main`.
-- Ejecuta `terraform apply` automáticamente en `main`.
+- Ejecuta `terraform apply` automáticamente en `push` a `main` y en ejecuciones manuales.
 - Usa backend remoto en S3, igual que el flujo manual documentado en `terraform/README.md`.
 
 ### `deploy-website.yml`
 
-- Ejecuta `yarn install` y `yarn build`.
+- Ejecuta un job de validación con `yarn install` y `yarn build`.
+- Ejecuta el deploy del sitio en `push` a `main` y en ejecuciones manuales.
 - Lee `site_bucket_name` y `cloudfront_distribution_id` desde el estado remoto de Terraform.
 - Hace `aws s3 sync` del directorio `dist/`.
 - Ejecuta invalidación de CloudFront para publicar los cambios.
@@ -26,7 +34,8 @@ Automatizar dos flujos de trabajo del repositorio:
 
 ### Secrets
 
-- `AWS_ROLE_TO_ASSUME`: IAM role que GitHub Actions asumirá vía OIDC.
+- `AWS_GITHUB_DEPLOY_ROLE_ARN` recomendado: IAM role que GitHub Actions asumirá vía OIDC.
+- `AWS_ROLE_TO_ASSUME` alternativo por compatibilidad con la versión anterior del workflow.
 - `TERRAFORM_STATE_BUCKET`: bucket S3 donde vive el estado remoto de Terraform.
 
 ### Repository variables
