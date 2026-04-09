@@ -39,6 +39,13 @@ Puedes copiar `terraform.tfvars.example` a `terraform.tfvars` y ajustar:
 - `create_route53_alias_records` si el DNS de la zona vive en otro proyecto Terraform
 - `tags`
 
+Para `code.bo`, este repositorio ya incluye un `terraform.tfvars` listo para producción que:
+
+- reutiliza el certificado ACM existente `code.bo` en `us-east-1`
+- no crea alias Route53 desde este state
+
+Esto evita colisiones con los registros y validaciones DNS ya administrados en otro stack.
+
 ## Uso
 
 ```bash
@@ -57,6 +64,11 @@ En ese caso:
 - reutiliza el certificado existente con `acm_certificate_arn`
 - desactiva la creación de alias con `create_route53_alias_records = false`
 - crea los alias `code.bo` y `www.code.bo` en el proyecto que ya administra la zona usando los outputs `cloudfront_domain_name` y `cloudfront_hosted_zone_id`
+
+Nota sobre ACM para `code.bo`:
+
+- el certificado `*.code.bo` no cubre el apex `code.bo`
+- el certificado correcto para esta landing es el de `code.bo` con SAN `www.code.bo`
 
 ## Deploy del sitio
 
