@@ -22,16 +22,11 @@ Infraestructura mínima para desplegar este landing estático en AWS con:
 
 ## Backend S3
 
-El backend se declara de forma parcial en `backend.tf` para que puedas reutilizar el bucket de estado que ya manejes en tu entorno.
+Este proyecto sigue el mismo enfoque que `specboard`: el backend remoto está declarado directamente en la configuración de Terraform.
 
-Ejemplo de inicialización:
-
-```bash
-terraform init \
-  -backend-config="bucket=YOUR_TERRAFORM_STATE_BUCKET" \
-  -backend-config="key=codebolab/website/terraform.tfstate" \
-  -backend-config="region=us-east-1"
-```
+- bucket: `codebolab-terraform-states`
+- key: `codebolab/website/terraform.tfstate`
+- region: `us-east-1`
 
 ## Variables
 
@@ -47,10 +42,7 @@ Puedes copiar `terraform.tfvars.example` a `terraform.tfvars` y ajustar:
 ## Uso
 
 ```bash
-terraform init \
-  -backend-config="bucket=YOUR_TERRAFORM_STATE_BUCKET" \
-  -backend-config="key=codebolab/website/terraform.tfstate" \
-  -backend-config="region=us-east-1"
+terraform init
 
 terraform plan -var-file="terraform.tfvars"
 terraform apply -var-file="terraform.tfvars"

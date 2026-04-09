@@ -65,12 +65,7 @@ jobs:
         run: terraform fmt -check -recursive
 
       - name: Initialize Terraform
-        run: |
-          terraform init \
-            -input=false \
-            -backend-config="bucket=${{ secrets.TERRAFORM_STATE_BUCKET }}" \
-            -backend-config="key=${{ vars.TERRAFORM_STATE_KEY != '' && vars.TERRAFORM_STATE_KEY || 'codebolab/website/terraform.tfstate' }}" \
-            -backend-config="region=${{ env.AWS_REGION }}"
+        run: terraform init -input=false
 
       - name: Validate Terraform configuration
         run: terraform validate
@@ -108,12 +103,7 @@ jobs:
           role-to-assume: ${{ vars.AWS_GITHUB_DEPLOY_ROLE_ARN || secrets.AWS_GITHUB_DEPLOY_ROLE_ARN || secrets.AWS_ROLE_TO_ASSUME }}
 
       - name: Initialize Terraform
-        run: |
-          terraform init \
-            -input=false \
-            -backend-config="bucket=${{ secrets.TERRAFORM_STATE_BUCKET }}" \
-            -backend-config="key=${{ vars.TERRAFORM_STATE_KEY != '' && vars.TERRAFORM_STATE_KEY || 'codebolab/website/terraform.tfstate' }}" \
-            -backend-config="region=${{ env.AWS_REGION }}"
+        run: terraform init -input=false
 
       - name: Apply Terraform changes
         run: terraform apply -input=false -auto-approve
