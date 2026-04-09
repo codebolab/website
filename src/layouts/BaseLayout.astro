@@ -23,6 +23,29 @@ const siteUrl = Astro.site;
 const canonicalUrl = siteUrl ? new URL(path, siteUrl).toString() : undefined;
 const socialImageUrl = siteUrl ? new URL(ogImage, siteUrl).toString() : ogImage;
 const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData];
+const gtmId = "GTM-5W5XPQHK";
+const clickTrackingScript = `
+document.addEventListener('click', function(event) {
+  const target = event.target instanceof Element ? event.target.closest('[data-track-click]') : null;
+  if (!target) return;
+
+  window.dataLayer = window.dataLayer || [];
+
+  const trackingLabel = target.getAttribute('data-track-click') || 'unknown_click';
+  const trackingSection = target.getAttribute('data-track-section') || 'unknown_section';
+  const trackingText = (target.getAttribute('data-track-text') || target.textContent || '').trim();
+  const trackingHref = target instanceof HTMLAnchorElement ? (target.getAttribute('href') || '') : '';
+
+  window.dataLayer.push({
+    event: 'ui_click',
+    click_label: trackingLabel,
+    click_section: trackingSection,
+    click_text: trackingText,
+    click_href: trackingHref,
+    page_path: window.location.pathname
+  });
+});
+`;
 ---
 
 <!doctype html>
@@ -56,6 +79,14 @@ const schemaItems = Array.isArray(structuredData) ? structuredData : [structured
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet" />
+    <script is:inline>
+      {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');`}
+    </script>
+    <script is:inline>{clickTrackingScript}</script>
     {schemaItems
       .filter((item) => Object.keys(item).length > 0)
       .map((item) => (
@@ -72,6 +103,15 @@ const schemaItems = Array.isArray(structuredData) ? structuredData : [structured
     </style>
   </head>
   <body>
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+        title="Google Tag Manager"
+      ></iframe>
+    </noscript>
     <slot />
   </body>
 </html>
