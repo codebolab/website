@@ -2,27 +2,31 @@
 
 ## Oferta principal
 
-MVP SaaS listo en 4–8 semanas
+Producto SaaS listo en 4–8 semanas
 
 Incluye:
 
-- diseño técnico
-- desarrollo completo
-- base de datos
+- discovery y diseño técnico
+- desarrollo completo del producto inicial
+- base de datos y APIs
 - tracking básico de analytics
+- infraestructura inicial de despliegue
 
 ---
 
-## Oferta secundaria
+## Oferta especializada
 
-Discovery + arquitectura
+Capacidades de data, analytics y AI para productos existentes
 
-Duración:
+Incluye:
 
-1–2 semanas
+- instrumentación y métricas
+- pipelines y reporting
+- automatización de workflows
+- asistentes internos o features con AI
 
 ---
 
 ## Oferta continua
 
-Partner técnico mensual
+Partner técnico mensual para construir, evolucionar y escalar producto

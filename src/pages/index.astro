@@ -4,7 +4,10 @@ import BrandLogo from "../components/BrandLogo.astro";
 
 const pageTitle = "CodeboLab | Technical partner for data-driven and AI-powered SaaS products";
 const pageDescription =
-  "CodeboLab helps startups and companies design, build, and scale SaaS products with strong foundations in software, data, analytics, and AI.";
+  "CodeboLab helps startups and companies define, build, and evolve SaaS products with strong foundations in software, data, analytics, and AI.";
+
+const serviceAccents = ["mint", "sky", "tertiary"] as const;
+const serviceIcons = ["rocket_launch", "database", "bolt"] as const;
 
 const translations = {
   en: {
@@ -17,11 +20,11 @@ const translations = {
     },
     hero: {
       eyebrow: "Technical Strategy & Development",
-      title: "We build software products with deep expertise in data and AI",
+      title: "We develop SaaS products with strong foundations in software, data, and AI",
       copy:
-        "We architect resilient software ecosystems that transform raw data into predictive intelligence and scalable commercial advantages.",
+        "We help companies define what to build, develop the product, structure the data layer, and turn AI into practical capabilities inside the business and the product.",
       primaryCta: "Schedule a call",
-      secondaryCta: "View our stack"
+      secondaryCta: "View our services"
     },
     problem: {
       eyebrow: "Problem Identification",
@@ -49,23 +52,23 @@ const translations = {
       eyebrow: "The Partnership Model",
       title: "We work as your technical partner.",
       copy:
-        "We don't just take orders. We analyze your business goals and architect the path that minimizes risk while maximizing technical leverage.",
+        "We don't just ship tickets. We help define scope, shape the technical foundation, and connect software, data, and AI into one practical product strategy.",
       items: [
         {
           title: "Define",
-          body: "We strip away the noise to find the core technical challenges and business opportunities in your product vision."
+          body: "We clarify the product goal, reduce ambiguity, and identify the technical decisions that matter early."
         },
         {
-          title: "Make decisions",
-          body: "Architecture, stack selection, and data modeling. We build the skeleton that supports long-term growth."
+          title: "Architect",
+          body: "Architecture, stack, data model, and analytics strategy. We build the foundation that supports growth instead of slowing it down."
         },
         {
-          title: "Design",
-          body: "High-fidelity interfaces optimized for technical usability and complex data display."
+          title: "Build",
+          body: "We design and develop the product iteratively, with the core workflows, infrastructure, and observability in place from the start."
         },
         {
-          title: "Build / Evolve",
-          body: "Iterative development with continuous integration, ensuring your product evolves as fast as the market demands."
+          title: "Evolve",
+          body: "We improve the product with better analytics, automation, and AI capabilities as the business gains clarity and traction."
         }
       ]
     },
@@ -74,22 +77,22 @@ const translations = {
       title: "What we build.",
       items: [
         {
-          title: "SaaS MVPs",
+          title: "SaaS products",
           description:
-            "High-fidelity products built with scalable infrastructure from Day 1. We specialize in complex B2B workflows.",
-          features: ["Cloud-Native Architecture", "Multi-Tenant Security", "Stripe & API Integration"]
+            "We develop SaaS products with the discovery, architecture, and technical foundations needed to launch well and evolve without expensive rework.",
+          features: ["Scope and architecture definition", "Frontend, backend, APIs and database", "Initial infrastructure and deployment"]
         },
         {
-          title: "Data-driven systems",
+          title: "Data foundations & analytics",
           description:
-            "Real-time dashboards and analytics pipelines that turn fragmented data into actionable business intelligence.",
-          features: ["Event-Driven Architecture", "Real-time Telemetry", "BI Tool Customization"]
+            "We structure product data, event tracking, and reporting so teams can measure what matters and make better operating decisions.",
+          features: ["Event tracking and metrics", "Pipelines and reporting", "Operational visibility"]
         },
         {
-          title: "AI-enabled features",
+          title: "AI features & workflows",
           description:
-            "Integrating LLMs and ML models into your existing workflows to automate decision-making and enhance UX.",
-          features: ["LLM Pipeline Orchestration", "Vector Database Ops", "Predictive Logic UX"]
+            "We add practical AI capabilities to products and internal operations, from copilots and automation to intelligent product features.",
+          features: ["Assistants and copilots", "LLM-powered workflows", "Search, extraction, and enrichment"]
         }
       ]
     },
@@ -124,17 +127,17 @@ const translations = {
         {
           title: "Discovery",
           description:
-            "Deep technical audit, stakeholder alignment, and feasibility analysis. We map the territory before we march."
+            "We align on business goals, define the scope, and establish the architecture and data foundations before development starts."
         },
         {
           title: "Build",
           description:
-            "Rapid development sprints with bi-weekly demos. You see the product evolving in real-time, every two weeks."
+            "We build iteratively, with frequent feedback loops, visible progress, and the core product workflows delivered in a practical sequence."
         },
         {
           title: "Scale",
           description:
-            "Post-launch optimization, infrastructure scaling, and continuous feature evolution based on user feedback."
+            "We improve the system with better analytics, infrastructure, automation, and AI capabilities as the product matures."
         }
       ]
     },
@@ -142,7 +145,7 @@ const translations = {
       eyebrow: "Ready to build your product?",
       title: "Ready to build your product?",
       copy:
-        "We're currently accepting new projects. Book a strategy call to discuss your technical roadmap.",
+        "Let's talk about your product, the technical challenges behind it, and the fastest path to a solid first version.",
       primary: "Schedule a call",
       secondary: "Our Process"
     },
@@ -174,9 +177,9 @@ const translations = {
     },
     hero: {
       eyebrow: "Estrategia técnica y desarrollo",
-      title: "Construimos productos de software con especialización en datos e IA",
+      title: "Desarrollamos productos SaaS con bases sólidas en software, datos e IA",
       copy:
-        "Diseñamos ecosistemas de software resilientes que convierten datos en inteligencia útil y ventajas reales para escalar el negocio.",
+        "Ayudamos a definir qué construir, desarrollar el producto, estructurar la capa de datos y convertir la AI en capacidades útiles dentro del negocio y del producto.",
       primaryCta: "Agendar una llamada",
       secondaryCta: "Ver nuestros servicios"
     },
@@ -206,23 +209,23 @@ const translations = {
       eyebrow: "Modelo de partnership",
       title: "Trabajamos como tu partner técnico.",
       copy:
-        "No solo ejecutamos tareas. Analizamos tus objetivos de negocio y diseñamos el camino técnico que reduce riesgo y multiplica la capacidad de ejecución.",
+        "No solo ejecutamos tickets. Ayudamos a definir alcance, construir la base técnica y conectar software, datos e AI en una sola estrategia de producto.",
       items: [
         {
           title: "Definir",
-          body: "Eliminamos ruido para identificar los desafíos técnicos clave y las oportunidades reales detrás de la visión del producto."
+          body: "Reducimos ambigüedad, alineamos objetivos y detectamos las decisiones técnicas que importan desde el inicio."
         },
         {
-          title: "Tomar decisiones",
-          body: "Arquitectura, stack y modelo de datos. Construimos la estructura que sostiene el crecimiento en el largo plazo."
+          title: "Arquitectar",
+          body: "Arquitectura, stack, modelo de datos y estrategia de analytics. Construimos la base que sostiene el crecimiento."
         },
         {
-          title: "Diseñar",
-          body: "Interfaces de alta fidelidad optimizadas para usabilidad técnica y para productos con flujos y datos complejos."
+          title: "Construir",
+          body: "Diseñamos y desarrollamos el producto de forma iterativa, con workflows clave, infraestructura y observabilidad desde temprano."
         },
         {
-          title: "Construir / Evolucionar",
-          body: "Desarrollo iterativo con integración continua, para que el producto evolucione al ritmo que exige el mercado."
+          title: "Evolucionar",
+          body: "Mejoramos el producto con mejores métricas, automatización y capacidades de AI a medida que el negocio gana tracción."
         }
       ]
     },
@@ -231,22 +234,22 @@ const translations = {
       title: "Lo que construimos.",
       items: [
         {
-          title: "MVPs SaaS",
+          title: "Productos SaaS",
           description:
-            "Productos de alta calidad construidos sobre infraestructura escalable desde el día uno. Nos enfocamos en flujos B2B complejos.",
-          features: ["Arquitectura cloud-native", "Seguridad multi-tenant", "Integración con Stripe y APIs"]
+            "Desarrollamos productos SaaS con el discovery, la arquitectura y la base técnica necesarias para lanzar bien y evolucionar sin retrabajo costoso.",
+          features: ["Definición de alcance y arquitectura", "Frontend, backend, APIs y base de datos", "Infraestructura inicial y despliegue"]
         },
         {
-          title: "Sistemas orientados a datos",
+          title: "Data foundations y analytics",
           description:
-            "Dashboards en tiempo real y pipelines analíticos que convierten datos fragmentados en inteligencia accionable para el negocio.",
-          features: ["Arquitectura orientada a eventos", "Telemetría en tiempo real", "Customización de herramientas BI"]
+            "Estructuramos datos, tracking y reporting para que el equipo pueda medir lo importante y tomar mejores decisiones operativas.",
+          features: ["Eventos y métricas clave", "Pipelines y reporting", "Visibilidad operativa"]
         },
         {
-          title: "Features habilitados por AI",
+          title: "Features y workflows con AI",
           description:
-            "Integramos LLMs y modelos de machine learning en tus flujos para automatizar decisiones y mejorar la experiencia del usuario.",
-          features: ["Orquestación de pipelines con LLMs", "Operación con bases vectoriales", "UX con lógica predictiva"]
+            "Integramos capacidades prácticas de AI en productos y operaciones internas, desde asistentes hasta automatización y enriquecimiento de información.",
+          features: ["Asistentes y copilots", "Workflows con LLMs", "Búsqueda, extracción y enriquecimiento"]
         }
       ]
     },
@@ -281,17 +284,17 @@ const translations = {
         {
           title: "Discovery",
           description:
-            "Auditoría técnica, alineación con stakeholders y análisis de factibilidad. Mapeamos el territorio antes de construir."
+            "Alineamos objetivos de negocio, definimos alcance y establecemos la arquitectura y la base de datos antes de desarrollar."
         },
         {
           title: "Build",
           description:
-            "Sprints rápidos con demos frecuentes. El producto evoluciona de forma visible y continua."
+            "Construimos de forma iterativa, con feedback frecuente, avances visibles y una secuencia práctica de entregas."
         },
         {
           title: "Scale",
           description:
-            "Optimización post-lanzamiento, escalado de infraestructura y evolución constante basada en feedback y datos."
+            "Mejoramos el sistema con mejor analytics, infraestructura, automatización y capacidades de AI a medida que el producto madura."
         }
       ]
     },
@@ -299,7 +302,7 @@ const translations = {
       eyebrow: "¿Listo para construir tu producto?",
       title: "¿Listo para construir tu producto?",
       copy:
-        "Actualmente estamos aceptando nuevos proyectos. Agenda una llamada estratégica para conversar sobre tu roadmap técnico.",
+        "Conversemos sobre tu producto, los desafíos técnicos detrás de él y el camino más directo hacia una primera versión sólida.",
       primary: "Agendar una llamada",
       secondary: "Nuestro proceso"
     },
@@ -353,11 +356,12 @@ const structuredData = [
     url: "https://codebolab.com/",
     description: pageDescription,
     serviceType: [
+      "Product discovery and technical architecture",
       "SaaS product development",
       "MVP development",
       "Data engineering",
       "Analytics implementation",
-      "AI product integration"
+      "AI workflows and product integration"
     ],
     areaServed: "Worldwide",
     email: "hello@codebolab.com",
@@ -368,15 +372,15 @@ const structuredData = [
     offers: [
       {
         "@type": "Offer",
-        name: "SaaS MVP development"
+        name: "SaaS product development"
       },
       {
         "@type": "Offer",
-        name: "Data-driven systems"
+        name: "Data foundations and analytics"
       },
       {
         "@type": "Offer",
-        name: "AI-enabled product features"
+        name: "AI features and workflows"
       }
     ]
   }
@@ -489,16 +493,16 @@ const structuredData = [
 
           <div class="service-grid">
             {content.services.items.map((service, index) => (
-              <article class={`service-card service-card--${["mint", "sky", "tertiary"][index]}`}>
-                <div class={`service-card__icon service-card__icon--${["mint", "sky", "tertiary"][index]}`}>
-                  <span class="material-symbols-outlined">{["rocket_launch", "database", "bolt"][index]}</span>
+              <article class={`service-card service-card--${serviceAccents[index]}`}>
+                <div class={`service-card__icon service-card__icon--${serviceAccents[index]}`}>
+                  <span class="material-symbols-outlined">{serviceIcons[index]}</span>
                 </div>
                 <h3 data-i18n={`services.items.${index}.title`}>{service.title}</h3>
                 <p data-i18n={`services.items.${index}.description`}>{service.description}</p>
                 <ul class="service-card__features">
                   {service.features.map((feat, featureIndex) => (
                     <li>
-                      <span class={`service-card__bullet service-card__bullet--${["mint", "sky", "tertiary"][index]}`}></span>
+                      <span class={`service-card__bullet service-card__bullet--${serviceAccents[index]}`}></span>
                       <span data-i18n={`services.items.${index}.features.${featureIndex}`}>{feat}</span>
                     </li>
                   ))}

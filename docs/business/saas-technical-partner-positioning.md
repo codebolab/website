@@ -15,6 +15,12 @@ Capturar leads de empresas y emprendedores que necesitan un partner técnico par
 
 Ofrecemos un servicio de diseño, desarrollo y evolución de productos SaaS, actuando como partner técnico estratégico. Combinamos producto, ingeniería, data engineering, analytics e inteligencia artificial para ayudar a nuestros clientes a construir soluciones útiles, escalables y listas para crecer.
 
+La oferta se articula en tres líneas principales:
+
+- desarrollo de software y productos SaaS
+- fundamentos de data y analytics
+- features, workflows y automatización con AI
+
 ## Problema Que Resolvemos
 
 - Construir un producto digital exige decisiones técnicas complejas desde el inicio
@@ -46,6 +52,7 @@ Actuamos como un partner técnico que combina experiencia en desarrollo de softw
 
 Ideal para:
 
+- Discovery y definición técnica
 - MVPs
 - Nuevas plataformas
 - Productos digitales en fase de lanzamiento
@@ -56,6 +63,7 @@ Incluye:
 - Diseño de arquitectura
 - Desarrollo del producto
 - Implementación de fundamentos de data y analytics
+- Integración inicial de automatización o AI cuando aporta valor
 
 ### 2. Colaboración Continua
 
@@ -84,9 +92,9 @@ El tono debe ser:
 
 ## Mensajes Clave
 
-- Construimos productos SaaS con bases técnicas sólidas desde el inicio
-- Integramos desarrollo, data y AI en una sola ejecución
-- Ayudamos a lanzar más rápido sin comprometer escalabilidad
+- Definimos, construimos y evolucionamos productos SaaS con bases técnicas sólidas desde el inicio
+- Integramos software, data y AI en una sola ejecución
+- Ayudamos a lanzar más rápido sin comprometer la base futura del producto
 - Acompañamos a founders y equipos como partner técnico real
 - Diseñamos pensando en producto, negocio y evolución futura
 
@@ -112,7 +120,7 @@ Titular sugerido:
 
 Subtítulo sugerido:
 
-Diseñamos, construimos y evolucionamos productos digitales para startups, empresas y founders que necesitan velocidad, calidad y una base técnica preparada para escalar.
+Definimos, desarrollamos y evolucionamos productos digitales para startups, empresas y founders que necesitan velocidad, calidad y una base técnica preparada para escalar con datos y AI.
 
 CTA principal:
 

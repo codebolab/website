@@ -57,7 +57,7 @@ Un equipo pequeño, con experiencia real y potenciado con herramientas de inteli
 
 ## Solution
 
-CodeboLab es un partner técnico que ayuda a empresas a diseñar, construir y evolucionar productos SaaS con una base sólida en datos, analytics e inteligencia artificial.
+CodeboLab es un partner técnico que ayuda a empresas a definir, construir y evolucionar productos SaaS con una base sólida en software, datos, analytics e inteligencia artificial.
 
 Trabajamos de forma cercana con nuestros clientes, no solo como ejecutores, sino como parte del equipo que toma decisiones clave sobre el producto.
 
@@ -69,6 +69,12 @@ Combinamos:
 * Uso de herramientas modernas de AI para acelerar la ejecución
 
 Nuestro enfoque permite construir productos más rápido, con mejor calidad técnica y preparados para escalar.
+
+La propuesta se organiza en tres líneas principales:
+
+* Desarrollo de software y productos SaaS
+* Fundamentos de data y analytics
+* Features, workflows y automatización con AI
 
 ---
 
@@ -131,8 +137,33 @@ Este es el momento ideal para construir productos con una base moderna desde el 
 
 ## Business Model
 
-* Proyectos definidos (MVPs, plataformas)
-* Colaboración continua como partner técnico (retainer / horas)
+### 1. Proyectos definidos
+
+Pensado para:
+
+* Productos SaaS
+* Nuevos módulos, productos o plataformas
+
+Incluye normalmente:
+
+* Definición de alcance
+* Arquitectura inicial
+* Construcción del producto
+* Fundamentos de datos y analytics
+
+### 2. Colaboración continua
+
+Pensado para:
+
+* Evolución de producto
+* Optimización de arquitectura y operación
+* Mejora continua en software, data y AI
+
+Formato:
+
+* Retainer mensual
+* Bolsa de horas
+* Soporte técnico y estratégico continuo
 
 ---
 

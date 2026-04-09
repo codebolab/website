@@ -29,7 +29,7 @@ Capturar leads de empresas y founders que necesitan un partner técnico para dis
 
 #### Your partner to build data-driven and AI-powered SaaS products
 
-We help companies design, build, and scale software products with a strong foundation in data, analytics, and AI.
+We help companies define, build, and evolve software products with a strong foundation in software, data, analytics, and AI.
 
 CTA:
 
@@ -74,7 +74,7 @@ We help you:
 
 - Define what to build
 - Make the right technical decisions
-- Design scalable systems
+- Build the right technical foundations
 - Build and evolve your product
 
 UI notes:
@@ -89,21 +89,21 @@ UI notes:
 
 ### What we build
 
-#### SaaS MVPs
+#### SaaS products
 
-Products designed to validate fast and scale.
+Products developed with the right scope, architecture, and technical foundation to launch and evolve well.
 
-#### Data-driven systems
+#### Data foundations & analytics
 
 Applications with analytics and data pipelines built-in.
 
-#### AI-enabled features
+#### AI features & workflows
 
 Automation, classification, and intelligent workflows.
 
 UI notes:
 
-- Presentar en 3 cards o columnas
+- Presentar en 3 cards o en una grilla adaptable
 - Cada bloque debe incluir título y descripción corta
 - Mantener equilibrio visual y consistencia entre cards
 
