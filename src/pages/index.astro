@@ -399,12 +399,12 @@ const structuredData = [
       <div class="container nav">
         <BrandLogo size="sm" />
         <nav class="nav-links" aria-label="Primary">
-          <a href="#approach" class="active" data-i18n="nav.approach">{content.nav.approach}</a>
-          <a href="#services" data-i18n="nav.services">{content.nav.services}</a>
-          <a href="#why" data-i18n="nav.why">{content.nav.why}</a>
-          <a href="#process" data-i18n="nav.process">{content.nav.process}</a>
+          <a href="#approach" class="active" data-i18n="nav.approach" data-track-click="nav_approach" data-track-section="header">{content.nav.approach}</a>
+          <a href="#services" data-i18n="nav.services" data-track-click="nav_services" data-track-section="header">{content.nav.services}</a>
+          <a href="#why" data-i18n="nav.why" data-track-click="nav_why" data-track-section="header">{content.nav.why}</a>
+          <a href="#process" data-i18n="nav.process" data-track-click="nav_process" data-track-section="header">{content.nav.process}</a>
         </nav>
-        <a class="button button--primary button--small" href="#cta" data-i18n="nav.cta">{content.nav.cta}</a>
+        <a class="button button--primary button--small" href="#cta" data-i18n="nav.cta" data-track-click="nav_primary_cta" data-track-section="header">{content.nav.cta}</a>
       </div>
     </header>
 
@@ -425,8 +425,8 @@ const structuredData = [
           <p class="hero__copy" data-i18n="hero.copy">{content.hero.copy}</p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#cta" data-i18n="hero.primaryCta">{content.hero.primaryCta}</a>
-            <a class="button button--ghost" href="#services">
+            <a class="button button--primary" href="#cta" data-i18n="hero.primaryCta" data-track-click="hero_primary_cta" data-track-section="hero">{content.hero.primaryCta}</a>
+            <a class="button button--ghost" href="#services" data-track-click="hero_secondary_cta" data-track-section="hero">
               <span data-i18n="hero.secondaryCta">{content.hero.secondaryCta}</span>
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_forward</span>
             </a>
@@ -563,8 +563,8 @@ const structuredData = [
             <h2 data-i18n="cta.title">{content.cta.title}</h2>
             <p data-i18n="cta.copy">{content.cta.copy}</p>
             <div class="hero__actions">
-              <a class="button button--primary" href="mailto:hello@codebolab.com" data-i18n="cta.primary">{content.cta.primary}</a>
-              <a class="button button--ghost" href="#process" data-i18n="cta.secondary">{content.cta.secondary}</a>
+              <a class="button button--primary" href="mailto:hello@codebolab.com" data-i18n="cta.primary" data-track-click="cta_primary_email" data-track-section="final_cta">{content.cta.primary}</a>
+              <a class="button button--ghost" href="#process" data-i18n="cta.secondary" data-track-click="cta_secondary_process" data-track-section="final_cta">{content.cta.secondary}</a>
             </div>
           </div>
         </div>
@@ -582,13 +582,13 @@ const structuredData = [
             <div class="contact-list__item">
               <dt data-i18n="footer.phoneLabel">{content.footer.phoneLabel}</dt>
               <dd>
-                <a href="tel:+59144063924" data-i18n="footer.phoneValue">{content.footer.phoneValue}</a>
+                <a href="tel:+59144063924" data-i18n="footer.phoneValue" data-track-click="footer_phone" data-track-section="footer_contact">{content.footer.phoneValue}</a>
               </dd>
             </div>
             <div class="contact-list__item">
               <dt data-i18n="footer.emailLabel">{content.footer.emailLabel}</dt>
               <dd>
-                <a href="mailto:info@code.bo" data-i18n="footer.emailValue">{content.footer.emailValue}</a>
+                <a href="mailto:info@code.bo" data-i18n="footer.emailValue" data-track-click="footer_email" data-track-section="footer_contact">{content.footer.emailValue}</a>
               </dd>
             </div>
           </dl>
@@ -619,10 +619,10 @@ const structuredData = [
         </div>
 
         <div class="footer__links">
-          <a href="#services" data-i18n="footer.services">{content.footer.services}</a>
-          <a href="#why" data-i18n="footer.why">{content.footer.why}</a>
-          <a href="#process" data-i18n="footer.process">{content.footer.process}</a>
-          <a href="#" data-i18n="footer.linkedin">{content.footer.linkedin}</a>
+          <a href="#services" data-i18n="footer.services" data-track-click="footer_services" data-track-section="footer_nav">{content.footer.services}</a>
+          <a href="#why" data-i18n="footer.why" data-track-click="footer_why" data-track-section="footer_nav">{content.footer.why}</a>
+          <a href="#process" data-i18n="footer.process" data-track-click="footer_process" data-track-section="footer_nav">{content.footer.process}</a>
+          <a href="#" data-i18n="footer.linkedin" data-track-click="footer_linkedin" data-track-section="footer_nav">{content.footer.linkedin}</a>
         </div>
 
         <span class="footer__copy" data-i18n="footer.copyright">{content.footer.copyright}</span>
