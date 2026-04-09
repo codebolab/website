@@ -1,0 +1,15 @@
+aws_region       = "us-east-1"
+project_name     = "codebolab-website"
+environment      = "production"
+domain_name      = "code.bo"
+hosted_zone_name = "code.bo"
+bucket_name      = "code.bo"
+
+# If another Terraform project already owns Route53 or ACM for this domain,
+# reuse the existing certificate and keep alias records there.
+# acm_certificate_arn         = "arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+# create_route53_alias_records = false
+
+tags = {
+  Owner = "codebolab"
+}
