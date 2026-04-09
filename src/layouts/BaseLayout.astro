@@ -4,12 +4,25 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   description?: string;
+  path?: string;
+  ogImage?: string;
+  type?: "website" | "article";
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   title = "CodeboLab | Data-driven and AI-powered SaaS partner",
-  description = "CodeboLab helps companies design, build, and scale SaaS products with a strong foundation in data, analytics, and AI."
+  description = "CodeboLab helps companies design, build, and scale SaaS products with a strong foundation in data, analytics, and AI.",
+  path = "/",
+  ogImage = "/og-image.svg",
+  type = "website",
+  structuredData = []
 } = Astro.props;
+
+const siteUrl = Astro.site;
+const canonicalUrl = siteUrl ? new URL(path, siteUrl).toString() : undefined;
+const socialImageUrl = siteUrl ? new URL(ogImage, siteUrl).toString() : ogImage;
+const schemaItems = Array.isArray(structuredData) ? structuredData : [structuredData];
 ---
 
 <!doctype html>
@@ -19,10 +32,36 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#002b67" />
+    <meta name="author" content="CodeboLab" />
+    <meta name="keywords" content="SaaS development, AI product development, data engineering, analytics, MVP development, technical partner" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <meta property="og:site_name" content="CodeboLab" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:locale" content="en_US" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="CodeboLab technical partner for data-driven and AI-powered SaaS products" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@500&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0&display=swap" rel="stylesheet" />
+    {schemaItems
+      .filter((item) => Object.keys(item).length > 0)
+      .map((item) => (
+        <script type="application/ld+json" set:html={JSON.stringify(item)} />
+      ))}
+    }
     <style>
       .material-symbols-outlined {
         font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;

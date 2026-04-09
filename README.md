@@ -20,7 +20,7 @@ Other commands:
 | `yarn dev`     | Start local dev server        |
 | `yarn build`   | Build for production          |
 | `yarn preview` | Preview the production build  |
-| `yarn check`   | Run Astro type checks         |
+| `yarn run check` | Run Astro type checks       |
 
 ## Structure
 

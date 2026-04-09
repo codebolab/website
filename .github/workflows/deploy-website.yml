@@ -1,0 +1,92 @@
+name: Deploy Website
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/deploy-website.yml"
+      - "astro.config.mjs"
+      - "package.json"
+      - "yarn.lock"
+      - "public/**"
+      - "src/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: website-production
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: ${{ vars.AWS_REGION != '' && vars.AWS_REGION || 'us-east-1' }}
+  TF_IN_AUTOMATION: true
+  TF_VAR_aws_region: ${{ vars.AWS_REGION != '' && vars.AWS_REGION || 'us-east-1' }}
+  TF_VAR_domain_name: ${{ vars.TF_VAR_DOMAIN_NAME != '' && vars.TF_VAR_DOMAIN_NAME || 'code.bo' }}
+  TF_VAR_hosted_zone_name: ${{ vars.TF_VAR_HOSTED_ZONE_NAME != '' && vars.TF_VAR_HOSTED_ZONE_NAME || 'code.bo' }}
+  TF_VAR_bucket_name: ${{ vars.TF_VAR_BUCKET_NAME }}
+  TF_VAR_acm_certificate_arn: ${{ vars.TF_VAR_ACM_CERTIFICATE_ARN }}
+  TF_VAR_create_route53_alias_records: ${{ vars.TF_VAR_CREATE_ROUTE53_ALIAS_RECORDS != '' && vars.TF_VAR_CREATE_ROUTE53_ALIAS_RECORDS || 'true' }}
+  TF_VAR_project_name: ${{ vars.TF_VAR_PROJECT_NAME != '' && vars.TF_VAR_PROJECT_NAME || 'codebolab-website' }}
+  TF_VAR_environment: ${{ vars.TF_VAR_ENVIRONMENT != '' && vars.TF_VAR_ENVIRONMENT || 'production' }}
+  TF_VAR_www_subdomain: ${{ vars.TF_VAR_WWW_SUBDOMAIN != '' && vars.TF_VAR_WWW_SUBDOMAIN || 'www' }}
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build website
+        run: ASTRO_TELEMETRY_DISABLED=1 yarn build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform init
+        working-directory: terraform
+        run: |
+          terraform init \
+            -input=false \
+            -backend-config="bucket=${{ secrets.TERRAFORM_STATE_BUCKET }}" \
+            -backend-config="key=${{ vars.TERRAFORM_STATE_KEY != '' && vars.TERRAFORM_STATE_KEY || 'codebolab/website/terraform.tfstate' }}" \
+            -backend-config="region=${{ env.AWS_REGION }}"
+
+      - name: Read deployment targets from Terraform state
+        id: terraform_outputs
+        working-directory: terraform
+        run: |
+          echo "bucket_name=$(terraform output -raw site_bucket_name)" >> "$GITHUB_OUTPUT"
+          echo "distribution_id=$(terraform output -raw cloudfront_distribution_id)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload static site to S3
+        run: |
+          aws s3 sync dist/ "s3://${{ steps.terraform_outputs.outputs.bucket_name }}" --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id "${{ steps.terraform_outputs.outputs.distribution_id }}" \
+            --paths "/*"
