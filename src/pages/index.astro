@@ -8,6 +8,7 @@ const pageDescription =
 
 const serviceAccents = ["mint", "sky", "tertiary"] as const;
 const serviceIcons = ["rocket_launch", "database", "bolt"] as const;
+const scheduleCallUrl = "https://calendly.com/code-info/30min";
 
 const translations = {
   en: {
@@ -404,7 +405,7 @@ const structuredData = [
           <a href="#why" data-i18n="nav.why" data-track-click="nav_why" data-track-section="header">{content.nav.why}</a>
           <a href="#process" data-i18n="nav.process" data-track-click="nav_process" data-track-section="header">{content.nav.process}</a>
         </nav>
-        <a class="button button--primary button--small" href="#cta" data-i18n="nav.cta" data-track-click="nav_primary_cta" data-track-section="header">{content.nav.cta}</a>
+        <a class="button button--primary button--small" href={scheduleCallUrl} target="_blank" rel="noopener noreferrer" data-i18n="nav.cta" data-track-click="nav_primary_cta" data-track-section="header">{content.nav.cta}</a>
       </div>
     </header>
 
@@ -425,7 +426,7 @@ const structuredData = [
           <p class="hero__copy" data-i18n="hero.copy">{content.hero.copy}</p>
 
           <div class="hero__actions">
-            <a class="button button--primary" href="#cta" data-i18n="hero.primaryCta" data-track-click="hero_primary_cta" data-track-section="hero">{content.hero.primaryCta}</a>
+            <a class="button button--primary" href={scheduleCallUrl} target="_blank" rel="noopener noreferrer" data-i18n="hero.primaryCta" data-track-click="hero_primary_cta" data-track-section="hero">{content.hero.primaryCta}</a>
             <a class="button button--ghost" href="#services" data-track-click="hero_secondary_cta" data-track-section="hero">
               <span data-i18n="hero.secondaryCta">{content.hero.secondaryCta}</span>
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">arrow_forward</span>
@@ -563,7 +564,7 @@ const structuredData = [
             <h2 data-i18n="cta.title">{content.cta.title}</h2>
             <p data-i18n="cta.copy">{content.cta.copy}</p>
             <div class="hero__actions">
-              <a class="button button--primary" href="mailto:hello@codebolab.com" data-i18n="cta.primary" data-track-click="cta_primary_email" data-track-section="final_cta">{content.cta.primary}</a>
+              <a class="button button--primary" href={scheduleCallUrl} target="_blank" rel="noopener noreferrer" data-i18n="cta.primary" data-track-click="cta_primary_schedule_call" data-track-section="final_cta">{content.cta.primary}</a>
               <a class="button button--ghost" href="#process" data-i18n="cta.secondary" data-track-click="cta_secondary_process" data-track-section="final_cta">{content.cta.secondary}</a>
             </div>
           </div>
