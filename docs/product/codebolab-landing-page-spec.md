@@ -13,6 +13,7 @@ Capturar leads de empresas y founders que necesitan un partner técnico para dis
 ## Primary CTA
 
 - Schedule a call
+- URL: https://calendly.com/code-info/30min
 
 ## Audience
 
@@ -34,6 +35,7 @@ We help companies define, build, and evolve software products with a strong foun
 CTA:
 
 - Schedule a call
+- URL: https://calendly.com/code-info/30min
 
 UI notes:
 
@@ -149,6 +151,7 @@ Let’s talk about your project.
 CTA:
 
 - Schedule a call
+- URL: https://calendly.com/code-info/30min
 
 UI notes:
 

@@ -105,6 +105,7 @@ La comunicación debe estar orientada a conversión directa.
 Objetivo principal:
 
 - Agendar una llamada
+- URL: https://calendly.com/code-info/30min
 
 Objetivo secundario:
 
@@ -125,6 +126,7 @@ Definimos, desarrollamos y evolucionamos productos digitales para startups, empr
 CTA principal:
 
 - Agendar una llamada
+- URL: https://calendly.com/code-info/30min
 
 CTA secundario:
 
@@ -162,6 +164,7 @@ Cerrar con una invitación directa a conversar sobre el producto, el reto técni
 CTA:
 
 - Agenda una llamada
+- URL: https://calendly.com/code-info/30min
 - Escríbenos sobre tu proyecto
 
 ## Resumen
