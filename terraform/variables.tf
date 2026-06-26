@@ -47,12 +47,6 @@ variable "acm_certificate_arn" {
   nullable    = true
 }
 
-variable "create_route53_alias_records" {
-  description = "Whether this module should create the apex and www Route53 alias records."
-  type        = bool
-  default     = true
-}
-
 variable "tags" {
   description = "Additional tags to apply to resources."
   type        = map(string)

@@ -189,7 +189,6 @@ resource "aws_s3_bucket_policy" "site" {
 }
 
 resource "aws_route53_record" "apex" {
-  count   = var.create_route53_alias_records ? 1 : 0
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = var.domain_name
   type    = "A"
@@ -202,7 +201,6 @@ resource "aws_route53_record" "apex" {
 }
 
 resource "aws_route53_record" "apex_ipv6" {
-  count   = var.create_route53_alias_records ? 1 : 0
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = var.domain_name
   type    = "AAAA"
@@ -215,7 +213,6 @@ resource "aws_route53_record" "apex_ipv6" {
 }
 
 resource "aws_route53_record" "www" {
-  count   = var.create_route53_alias_records ? 1 : 0
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = local.www_domain
   type    = "A"
@@ -228,7 +225,6 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_route53_record" "www_ipv6" {
-  count   = var.create_route53_alias_records ? 1 : 0
   zone_id = data.aws_route53_zone.primary.zone_id
   name    = local.www_domain
   type    = "AAAA"

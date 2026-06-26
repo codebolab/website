@@ -36,15 +36,14 @@ Puedes copiar `terraform.tfvars.example` a `terraform.tfvars` y ajustar:
 - `hosted_zone_name`
 - `bucket_name` si no quieres usar el dominio como nombre del bucket
 - `acm_certificate_arn` si ya existe un certificado administrado en otro stack
-- `create_route53_alias_records` si el DNS de la zona vive en otro proyecto Terraform
 - `tags`
 
 Para `code.bo`, este repositorio ya incluye un `terraform.tfvars` listo para producción que:
 
 - reutiliza el certificado ACM existente `code.bo` en `us-east-1`
-- no crea alias Route53 desde este state
+- administra los alias Route53 de la landing desde este state
 
-Esto evita colisiones con los registros y validaciones DNS ya administrados en otro stack.
+Los records existentes `code.bo` y `www.code.bo` tipo `A` y `AAAA` fueron importados y quedan administrados por este repo. Después de confirmar el plan en este repo, el ownership anterior debe removerse del state de `devops` con `terraform state rm`, sin destruir los records reales en AWS.
 
 ## Uso
 
@@ -57,13 +56,21 @@ terraform apply -var-file="terraform.tfvars"
 
 ## Reutilizar Route53 o ACM existentes
 
-Si `code.bo` ya está administrado por otro proyecto Terraform, la práctica recomendada es no gestionar los mismos registros desde dos estados distintos.
+Si `code.bo` ya está administrado por otro proyecto Terraform, la práctica recomendada es no gestionar los mismos registros desde dos estados distintos. Para esta landing, este repo toma ownership de los alias Route53 de `code.bo`.
 
 En ese caso:
 
 - reutiliza el certificado existente con `acm_certificate_arn`
-- desactiva la creación de alias con `create_route53_alias_records = false`
-- crea los alias `code.bo` y `www.code.bo` en el proyecto que ya administra la zona usando los outputs `cloudfront_domain_name` y `cloudfront_hosted_zone_id`
+- importa cualquier record existente antes de aplicar, por ejemplo:
+
+```bash
+AWS_PROFILE=codebo terraform import -var-file="terraform.tfvars" aws_route53_record.apex 'Z0044523QCA81UB2LNKN_code.bo_A'
+AWS_PROFILE=codebo terraform import -var-file="terraform.tfvars" aws_route53_record.apex_ipv6 'Z0044523QCA81UB2LNKN_code.bo_AAAA'
+AWS_PROFILE=codebo terraform import -var-file="terraform.tfvars" aws_route53_record.www 'Z0044523QCA81UB2LNKN_www.code.bo_A'
+AWS_PROFILE=codebo terraform import -var-file="terraform.tfvars" aws_route53_record.www_ipv6 'Z0044523QCA81UB2LNKN_www.code.bo_AAAA'
+```
+
+- remueve el resource equivalente del state anterior con `terraform state rm`, no con `terraform destroy`
 
 Nota sobre ACM para `code.bo`:
 
