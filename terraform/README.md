@@ -95,3 +95,16 @@ El repositorio incluye workflows para automatizar infraestructura y despliegue d
 - `.github/workflows/deploy-website.yml`
 
 La documentación de variables y secrets requeridos está en `docs/engineering/github-actions-deployment.md`.
+
+## Recuperación de estado
+
+Si un `terraform apply` falla con `Failed to persist state to backend`, Terraform puede escribir un archivo local `errored.tfstate`. No ejecutes otro `apply` antes de recuperar ese estado, porque podrías bifurcar el estado remoto.
+
+Para recuperarlo:
+
+```bash
+terraform init
+terraform state push errored.tfstate
+```
+
+En GitHub Actions, el workflow de infraestructura guarda `errored.tfstate` como artifact temporal cuando existe.
