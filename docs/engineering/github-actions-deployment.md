@@ -21,6 +21,8 @@ Los workflows ahora siguen el mismo patrón general usado en `specboard`:
 - Ejecuta `terraform fmt`, `terraform validate` y `terraform plan` en pull requests y cambios a `main`.
 - Ejecuta `terraform apply` automáticamente en `push` a `main` y en ejecuciones manuales.
 - Usa backend remoto en S3, igual que el flujo manual documentado en `terraform/README.md`.
+- Usa Terraform `1.15.7` y desactiva el wrapper de `hashicorp/setup-terraform` para evitar interferencias con la salida/comportamiento del CLI.
+- Si `terraform apply` falla después de escribir un archivo `errored.tfstate`, el workflow lo guarda como artifact temporal para poder recuperarlo.
 
 ### `deploy-website.yml`
 
@@ -82,3 +84,14 @@ Si la zona `code.bo` ya está administrada por otro proyecto Terraform, evita du
 - La rama de despliegue es `main`.
 - La infraestructura ya fue creada o podrá ser creada desde el workflow de Terraform.
 - La cuenta de AWS ya tiene configurado el trust policy para OIDC con GitHub Actions.
+
+## Recuperación de estado fallido
+
+Si Terraform falla con `Failed to persist state to backend` y genera `errored.tfstate`, no ejecutes otro `terraform apply` inmediatamente. Primero descarga el artifact `errored-tfstate` del workflow fallido y empuja ese estado al backend remoto:
+
+```bash
+terraform init
+terraform state push errored.tfstate
+```
+
+Después de confirmar que el estado remoto quedó actualizado, vuelve a ejecutar el workflow.
